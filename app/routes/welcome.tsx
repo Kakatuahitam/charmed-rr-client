@@ -1,12 +1,12 @@
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
-import { Drawer } from "./drawer";
+import logoDark from "../images/logo-dark.svg";
+import logoLight from "../images/logo-light.svg";
+import { Drawer } from "../components/drawer";
 
 export function Welcome() {
   return (
     <div>
       <header>
-        <Drawer/>
+        <Drawer title="Home"/>
       </header>
 
       <main className="flex flex-col items-center justify-center pt-16 pb-4">

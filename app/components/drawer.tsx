@@ -1,6 +1,6 @@
 import { Icons } from "./icons";
 
-export function Drawer(){
+export function Drawer({ title="Home" }){
   return (<div className="drawer">
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
 
@@ -19,7 +19,7 @@ export function Drawer(){
           </div>
         </div>
         <div className="flex-1 px-2 mx-2">
-          <a className="text-xl font-bold">Home</a>
+          <a className="text-xl font-bold">{title}</a>
         </div>
       </div>
     </div>
@@ -41,20 +41,20 @@ export function Drawer(){
           </div>
         </div>
 
-        {drawerButtons.map((button) => {
-          if (button.type === "divider") {
-            return <div className="divider divider m-0 h-0" />;
+        {drawerButtons.map((btn, key) => {
+          if (btn.type === "divider") {
+            return <div key={key} className="divider divider m-0 h-0" />;
           }
 
-          const { text, icon } = button;
+          const { text, icon } = btn;
 
           return (
-            <ul className="menu p-0 w-full border-b border-stone-300">
+            <ul key={key} className="menu p-0 w-full border-b border-stone-300">
               <li className="w-full">
-                <button className="w-full btn-ghost min-h-16 flex items-center gap-4 px-4 rounded-none">
+                <a href={btn.href} className="w-full btn-ghost min-h-16 flex items-center gap-4 px-4 rounded-none">
                   <div className="w-6 h-auto">{icon}</div>
                   <b>{text}</b>
-                </button>
+                </a>
               </li>
             </ul>
           );
@@ -65,10 +65,14 @@ export function Drawer(){
 }
 
 const drawerButtons = [
-  { text: "Profile", icon: Icons.Profile },
+  { text: "Profile", icon: Icons.Profile, href: "/profile"},
   { text: "Group Profile", icon: Icons.Group },
   { text: "Achievement", icon: Icons.Star },
   { type: "divider" },
+  { text: "Home", icon: Icons.Home, href: "/"},
+  { text: "About Us", icon: Icons.Information, href: "/about"},
+  { type: "divider" },
   { text: "Settings", icon: Icons.Settings },
+  { text: "Sign In", icon: Icons.SignIn, href: "/sign-in" },
   { text: "Sign Out", icon: Icons.Exit },
 ]
